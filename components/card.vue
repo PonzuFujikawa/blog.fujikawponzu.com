@@ -28,7 +28,7 @@ export default class Card extends Vue {
   post!: Object
 
   public getLink(slug: string) {
-    let localePath = this.$route.fullPath.includes('en') ? '/en' : '/ja'
+    let localePath = this.$route.fullPath.includes('en') ? '/en' : '/'
     return `${localePath}/posts/${slug}`
   }
 }

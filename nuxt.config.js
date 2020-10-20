@@ -11,10 +11,6 @@ export default {
     CTF_CPA_AT: process.env.CTF_CPA_AT,
   },
 
-  router: {
-    middleware: ['contentful/getPosts'],
-  },
-
   generate: {
     routes() {
       return Promise.all([
