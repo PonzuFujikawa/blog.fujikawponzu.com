@@ -19,7 +19,7 @@ export const mutations: MutationTree<RootState> = {
 
 export const actions: ActionTree<RootState, RootState> = {
   async nuxtServerInit ({ commit }) {
-    let isEnLang = this.$router.currentRoute.fullPath.includes('en');
+    let isEnLang = /en/.test(this.$i18n.locale);
     await contentfulClient.getEntries({
       content_type: 'blogPost',
       order: '-sys.createdAt',
