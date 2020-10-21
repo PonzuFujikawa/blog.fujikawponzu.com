@@ -3,13 +3,15 @@ import colors from 'vuetify/es5/util/colors'
 require('dotenv').config()
 const contentfulClient = require('./plugins/contentful').default
 
+const env = {
+  BASE_URL: process.env.BASE_URL,
+  CTF_SI: process.env.CTF_SI,
+  CTF_CDA_AT: process.env.CTF_CDA_AT,
+  CTF_CPA_AT: process.env.CTF_CPA_AT,
+}
+
 export default {
-  env: {
-    BASE_URL: process.env.BASE_URL,
-    CTF_SI: process.env.CTF_SI,
-    CTF_CDA_AT: process.env.CTF_CDA_AT,
-    CTF_CPA_AT: process.env.CTF_CPA_AT,
-  },
+  env,
 
   generate: {
     routes() {
