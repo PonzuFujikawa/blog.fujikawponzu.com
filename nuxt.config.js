@@ -65,7 +65,7 @@ export default {
       { rel: 'mask-icon', href: '/safari-icon.svg', color: '#FFFFFF' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
       { rel: 'manifest', href: '/manifest.json' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap' }
     ],
   },
 
