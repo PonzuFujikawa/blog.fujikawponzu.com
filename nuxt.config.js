@@ -18,27 +18,15 @@ export default {
       return Promise.all([
         contentfulClient.getEntries({
           content_type: 'blogPost',
-          locale: 'ja-JP',
         }),
-        contentfulClient.getEntries({
-          content_type: 'blogPost',
-          locale: 'en-US',
-        }),
-      ]).then(([posts_ja, posts_en]) => {
+      ]).then(([posts]) => {
         return [
-          '/', '/en',
           ...posts_ja.items.map((post) => {
             return {
               route: `/posts/${post.fields.slug}`,
               payload: post,
             }
           }),
-          ...posts_en.items.map((post) => {
-            return {
-              route: `/en/posts/${post.fields.slug}`,
-              payload: post,
-            }
-          })
         ]
       })
     }

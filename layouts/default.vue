@@ -5,8 +5,8 @@
         v-toolbar-title {{ $t('site_name') }}
       v-spacer
       div
-        nuxt-link( v-for="locale in availableLocales"
-        :key="locale.code" :to="switchLocalePath(locale.code)")
+        a( v-for="locale in availableLocales"
+        :key="locale.code" :href="switchLocalePath(locale.code)")
           | {{ locale.name }}
         v-btn( fab small @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
           v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-night
