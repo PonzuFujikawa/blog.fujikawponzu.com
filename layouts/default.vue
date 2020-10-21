@@ -1,14 +1,15 @@
 <template lang="pug">
   v-app
     v-toolbar( dense )
-      nuxt-link( :to="localePath('/')" class="text--primary text-decoration-none" )
+      nuxt-link( :to="localePath('/')" class="text--primary" )
         v-toolbar-title {{ $t('site_name') }}
       v-spacer
-      div
-        a( v-for="locale in availableLocales"
+      div( class="d-inline-flex align-center" )
+        v-btn( tag="a" elevation="2" class="langswitcher text--primary"
+        v-for="locale in availableLocales"
         :key="locale.code" :href="switchLocalePath(locale.code)")
           | {{ locale.name }}
-        v-btn( fab small @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
+        v-btn( fab small elevation="2" @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
           v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-night
           v-icon( v-else color="yellow accent-4" ) mdi-weather-sunny
     v-main
@@ -35,6 +36,13 @@ export default class Default extends Vue {
 <style lang="stylus" scoped>
 .v-toolbar
   flex initial
+  a
+    text-decoration none
 .v-btn:before
   opacity 0 !important
+.langswitcher
+  border-radius 1rem
+  padding 0 1rem
+  margin 0 1rem
+  color initial
 </style>
