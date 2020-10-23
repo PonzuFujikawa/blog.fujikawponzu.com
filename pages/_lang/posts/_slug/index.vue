@@ -1,10 +1,14 @@
 <template lang="pug">
- section
-    v-sheet
+  div
+    v-sheet( tag="article" elevation="2" rounded )
       h1 {{ post.fields.title }}
-      p
-        small {{ $getFormattedDate(post.sys.createdAt) }}
-      article( v-html="rendererMdToHtml(post.fields.article)" )
+      small( class="d-inline-flex align-center" )
+        v-icon( dense ) mdi-clock-outline
+        div {{ $getFormattedDate(post.sys.createdAt) }}
+      small( class="d-inline-flex align-center" )
+        v-icon( dense ) mdi-update
+        div {{ $getFormattedDate(post.sys.updatedAt) }}
+      section( v-html="rendererMdToHtml(post.fields.article)" )
 </template>
 
 <script lang="ts">
@@ -14,7 +18,6 @@ import { Entry } from 'contentful'
 import md from '@/plugins/markdownit'
 import { Component } from 'nuxt-property-decorator'
 import HeadMixin from '~/mixins/headMixin'
-import { Context } from '@nuxt/types'
 
 @Component({
   computed: mapState(['posts'])
@@ -42,3 +45,14 @@ export default class PostIndex extends HeadMixin {
   }
 }
 </script>
+
+<style lang="stylus">
+article
+  padding 1rem 1.2rem
+  h1
+    font-size 2rem
+  section
+    margin-top 1rem
+    p, pre, code
+      padding-left 1rem
+</style>
