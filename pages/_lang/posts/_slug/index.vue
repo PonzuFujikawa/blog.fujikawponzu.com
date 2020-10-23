@@ -22,6 +22,15 @@ import { Context } from '@nuxt/types'
 export default class PostIndex extends HeadMixin {
   posts!: Entry<any>[]
 
+  headInfo() {
+    const post = this.posts.find(
+      (post: Entry<any>) => post.fields.slug === this.$route.params.slug
+    )
+    return {
+      title: post ? post.fields.title : this.$t('site_name')
+    }
+  }
+
   get post() {
     return this.posts.find(
       (post: Entry<any>) => post.fields.slug === this.$route.params.slug

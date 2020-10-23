@@ -15,8 +15,8 @@ export default class HeadMixin extends Vue {
     const headInfo = this.headInfo()
 
     const siteName: string = t('site_name') as string
-    const title: string = t(headInfo.title || 'site_name') as string
-    const description: string = t(headInfo.description || 'site_description') as string
+    const title: string = headInfo.title || t('site_name') as string
+    const description: string = headInfo.description || t('site_description') as string
 
     const baseUrl: string = process.env.BASE_URL || ''
     const currentUrl: string = `${baseUrl}${this.$route.path}`
