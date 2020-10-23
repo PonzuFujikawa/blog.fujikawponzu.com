@@ -78,7 +78,6 @@ export default {
   plugins: [
     '@/plugins/utils',
     '@/plugins/contentful',
-    '@/plugins/markdownit',
     '@/plugins/i18n',
   ],
 
@@ -99,6 +98,7 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/markdownit',
     // https://i18n.nuxtjs.org/
     ['nuxt-i18n',
       {
@@ -169,6 +169,10 @@ export default {
         },
       },
     },
+  },
+
+  markdownit: {
+    injected: true,
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

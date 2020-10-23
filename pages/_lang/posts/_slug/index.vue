@@ -8,14 +8,13 @@
       small( class="d-inline-flex align-center" )
         v-icon( dense ) mdi-update
         div {{ $getFormattedDate(post.sys.updatedAt) }}
-      section( v-html="rendererMdToHtml(post.fields.article)" )
+      section( v-html="$md.render(post.fields.article)" )
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import { Entry } from 'contentful'
-import md from '@/plugins/markdownit'
 import { Component } from 'nuxt-property-decorator'
 import HeadMixin from '~/mixins/headMixin'
 
@@ -38,10 +37,6 @@ export default class PostIndex extends HeadMixin {
     return this.posts.find(
       (post: Entry<any>) => post.fields.slug === this.$route.params.slug
     )
-  }
-
-  private rendererMdToHtml(data: string) {
-    return md.render(data)
   }
 }
 </script>

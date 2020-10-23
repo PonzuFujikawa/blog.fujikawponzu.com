@@ -15,10 +15,10 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/pwa": "^3.0.2",
     "contentful": "^7.14.7",
     "core-js": "^3.6.5",
-    "markdown-it": "^11.0.1",
     "nuxt": "^2.14.6",
     "nuxt-i18n": "^6.15.3",
     "nuxt-property-decorator": "^2.8.8",
