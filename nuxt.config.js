@@ -32,6 +32,25 @@ export default {
     }
   },
 
+  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
+  vuetify: {
+    customVariables: ['~/assets/css/variables.scss'],
+    theme: {
+      dark: false,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3,
+        },
+      },
+    },
+  },
+
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
@@ -71,7 +90,11 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    '@/assets/css/style.styl'
+    '@/assets/css/style.styl',
+    {
+      src: '~/node_modules/highlight.js/styles/vs2015.css',
+      lang: 'css',
+    },
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
@@ -152,27 +175,25 @@ export default {
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
-  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
-  vuetify: {
-    customVariables: ['~/assets/css/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
-    },
-  },
-
   markdownit: {
     injected: true,
+    breaks: true,
+    html: true,
+    linkify: true,
+    highlight: (str, lang) => {
+      const hljs = require('highlight.js')
+      const languageName = lang.split(':')[0]
+      const filename = lang.split(':')[1]
+      if (lang && hljs.getLanguage(languageName)) {
+        try {
+          return '<pre class="hljs ' + languageName + 
+            (filename ? '" name="' + filename + '"><code>' : '><code>') +
+            hljs.highlight(languageName, str, true).value +
+            '</code></pre>'
+        } catch (__) {}
+        return '<pre class="hljs"><code>' + hljs.highlight('plaintext', str, true).value + '</code></pre>'
+      }
+    },
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

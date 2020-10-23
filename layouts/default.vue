@@ -1,6 +1,6 @@
 <template lang="pug">
   v-app
-    v-toolbar( dense )
+    v-toolbar( dense elevation="2" )
       nuxt-link( :to="localePath('/')" class="text--primary" )
         v-toolbar-title {{ $t('site_name') }}
       v-spacer
@@ -32,6 +32,21 @@ export default class Default extends Vue {
   }
 }
 </script>
+
+<style lang="stylus">
+/* invalidation vuetify css */
+.v-application code {
+  background unset
+  color unset
+  padding unset
+  border-radius unset
+  font-size unset
+  font-weight unset
+}
+code, kbd, pre, samp {
+  font-family 'Consolas', 'Courier New', monospace
+}
+</style>
 
 <style lang="stylus" scoped>
 .v-toolbar
