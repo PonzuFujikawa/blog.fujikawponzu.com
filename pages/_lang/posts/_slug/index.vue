@@ -46,7 +46,7 @@ export default class PostIndex extends HeadMixin {
 pre, .hljs {
   position relative
   padding-top 2em
-  max-height 20rem
+  max-height 25rem
 }
 pre[name]:not([name="undefined"])::after
   content attr(name)

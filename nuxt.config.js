@@ -177,7 +177,7 @@ export default {
 
   markdownit: {
     injected: true,
-    breaks: true,
+    breaks: false,
     html: true,
     linkify: true,
     highlight: (str, lang) => {
