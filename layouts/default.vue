@@ -16,7 +16,8 @@
       v-container
         nuxt
     v-footer( padless )
-      v-col( class="text-center" ) &copy; {{ new Date().getFullYear() }} - fujikawaponzu.com
+      v-col( class="text-center" ) &copy; {{ new Date().getFullYear() }} - 
+        a( class="text--primary" href="https://fujikawaponzu.com" ) fujikawaponzu.com
 </template>
 
 <script lang="ts">
