@@ -25,7 +25,8 @@ export default class PostIndex extends HeadMixin {
       (post: Entry<any>) => post.fields.slug === this.$route.params.slug
     )
     return {
-      title: post ? post.fields.title : this.$t('site_name')
+      title: post ? post.fields.title : this.$t('site_name'),
+      ogpImgPath: post ? post.fields.thumbnail : ''
     }
   }
 

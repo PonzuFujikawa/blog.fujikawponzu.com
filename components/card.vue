@@ -1,9 +1,9 @@
 <template lang="pug">
   v-hover
     template( v-slot="{hover}" )
-      v-card( :elevation="hover ? 12 : 4" class="transition-swing" )
+      v-card( :elevation="hover ? 8 : 4" class="transition-swing" )
         nuxt-link( :to="getLink(post.fields.slug)" class="text--primary text-decoration-none" )
-          v-img( :src="post.fields.thumbnail" :alt="post.fields.title" )
+          v-img( :lazy-src="loadingImg" :src="post.fields.thumbnail" :alt="post.fields.title" aspect-ratio=1200/630  )
           v-card-title
             | {{ post.fields.title }}
 </template>
@@ -15,17 +15,9 @@ import Vue from 'vue'
 
 @Component
 export default class Card extends Vue {
-  @Prop({
-    default: {
-      fields: {
-        title: 'sample',
-        thumbnail: null,
-        article: '',
-        publishedDate: null,
-      },
-    },
-  })
+  @Prop()
   post!: Object
+  loadingImg = require('../assets/img/loading.png')
 
   public getLink(slug: string) {
     return this.localePath(`/posts/${slug}`)
@@ -38,5 +30,6 @@ export default class Card extends Vue {
   width 100%
 
 .v-image
-  height 11.25rem
+  width 100%
+  height auto
 </style>
