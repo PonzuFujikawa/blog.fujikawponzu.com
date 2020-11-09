@@ -10,8 +10,8 @@
         :key="locale.code" :href="switchLocalePath(locale.code)")
           | {{ locale.name }}
         v-btn( fab small elevation="2" @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
-          v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-night
-          v-icon( v-else color="yellow accent-4" ) mdi-weather-sunny
+          v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-sunny
+          v-icon( v-else color="yellow accent-4" ) mdi-weather-night
     v-main
       v-container
         nuxt
