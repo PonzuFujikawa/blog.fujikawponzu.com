@@ -4,8 +4,6 @@
       v-card( :elevation="hover ? 8 : 4" class="transition-swing" )
         nuxt-link( :to="getLink(post.fields.slug)" class="text--primary text-decoration-none" )
           v-img( :lazy-src="loadingImg" :src="post.fields.thumbnail" :alt="post.fields.title" aspect-ratio=1200/630  )
-          v-card-title
-            | {{ post.fields.title }}
 </template>
 
 <script lang="ts">
