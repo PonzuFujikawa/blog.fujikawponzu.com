@@ -8,6 +8,7 @@ const env = {
   CTF_SI: process.env.CTF_SI,
   CTF_CDA_AT: process.env.CTF_CDA_AT,
   CTF_CPA_AT: process.env.CTF_CPA_AT,
+  GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
 }
 
 export default {
@@ -113,6 +114,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -193,6 +195,12 @@ export default {
         } catch (__) {}
         return '<pre class="hljs"><code>' + hljs.highlight('plaintext', str, true).value + '</code></pre>'
       }
+    },
+  },
+
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: env.GOOGLE_ANALYTICS_ID
     },
   },
 
