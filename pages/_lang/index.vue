@@ -27,7 +27,7 @@ export default class IndexPage extends mixins(HeadMixin) {
 <style lang="stylus" scoped>
 .articles-wrapper 
   display grid
-  grid-column-gap 3.5rem
-  grid-row-gap 4.5rem
-  grid-template-columns repeat(auto-fill, minmax(18.75rem, 1fr)) 
+  grid-column-gap 2.5rem
+  grid-row-gap 2.5rem
+  grid-template-columns repeat(auto-fill, minmax(20.75rem, 1fr)) 
 </style>

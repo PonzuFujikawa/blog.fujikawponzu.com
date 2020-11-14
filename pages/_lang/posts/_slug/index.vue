@@ -1,6 +1,8 @@
 <template lang="pug">
-  div
+  div.content-container
     content_component( :post="post" )
+    v-spacer
+    content_sidebar( :posts="posts" )
 </template>
 
 <script lang="ts">
@@ -10,10 +12,12 @@ import { Entry } from 'contentful'
 import { Component } from 'nuxt-property-decorator'
 import HeadMixin from '~/mixins/headMixin'
 import content_component from '~/components/content.vue'
+import content_sidebar from '~/components/sidebar.vue'
 
 @Component({
   components: {
-    content_component
+    content_component,
+    content_sidebar
   },
   computed: mapState(['posts']),
 })
@@ -37,3 +41,11 @@ export default class PostIndex extends HeadMixin {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.content-container
+  display flex
+  justify-content center
+  align-items flex-start
+  flex-wrap wrap
+</style>

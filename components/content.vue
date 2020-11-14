@@ -30,6 +30,7 @@ pre, .hljs {
   position relative
   padding-top 2em
   max-height 25rem
+  border 1px solid white
 }
 pre[name]:not([name="undefined"])::after
   content attr(name)
@@ -41,6 +42,8 @@ pre[name]:not([name="undefined"])::after
   padding 0 .2em
 /* original css */
 .ctf_content
+  width calc(100% - 20rem)
+  max-width 100%
   padding 1rem 1.2rem
   .ctf_content__title
     font-size 3rem
@@ -66,4 +69,8 @@ pre[name]:not([name="undefined"])::after
     font-size 1.1rem
   h6
     font-size 1rem
+
+@media screen and (max-width 768px)
+  .ctf_content
+    width 100%
 </style>

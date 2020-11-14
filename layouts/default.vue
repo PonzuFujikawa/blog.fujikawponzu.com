@@ -13,7 +13,7 @@
           v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-sunny
           v-icon( v-else color="yellow accent-4" ) mdi-weather-night
     v-main
-      v-container
+      v-container( fluid )
         nuxt
     v-footer( padless )
       v-col( class="text-center" ) &copy; {{ new Date().getFullYear() }} - 
