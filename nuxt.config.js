@@ -114,7 +114,6 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
-    '@nuxtjs/google-analytics'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -195,12 +194,6 @@ export default {
         } catch (__) {}
         return '<pre class="hljs"><code>' + hljs.highlight('plaintext', str, true).value + '</code></pre>'
       }
-    },
-  },
-
-  publicRuntimeConfig: {
-    googleAnalytics: {
-      id: env.GOOGLE_ANALYTICS_ID
     },
   },
 
