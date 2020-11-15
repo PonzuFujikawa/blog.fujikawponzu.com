@@ -91,6 +91,7 @@ export default {
       { rel: 'mask-icon', href: '/safari-icon.svg', color: '#FFFFFF' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
       { rel: 'manifest', href: '/manifest.json' },
+      { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap', as: 'style' }
     ],
     script: [
       {
