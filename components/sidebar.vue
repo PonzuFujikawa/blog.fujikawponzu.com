@@ -9,9 +9,9 @@
           cite {{ $t("webmaster_name") }}
         div
           a( href="https://twitter.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" class="social-badge" )
-            img( alt="Twitter Follow" src="http://img.shields.io/static/v1?label=twitter&style=flat&logo=twitter&message=%40PonzuFujikawa" )
+            img( alt="Twitter Follow" src="https://img.shields.io/static/v1?label=twitter&style=flat&logo=twitter&message=%40PonzuFujikawa" )
           a( href="https://github.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" class="social-badge" )
-            img( alt="GitHub followers" src="http://img.shields.io/static/v1?label=github&style=flat&logo=github&message=%40PonzuFujikawa")
+            img( alt="GitHub followers" src="https://img.shields.io/static/v1?label=github&style=flat&logo=github&message=%40PonzuFujikawa")
     section.recent-articles
       h1.sidebar_title {{ $t("sidebar_recent_articles") }}
       ul
