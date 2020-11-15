@@ -11,6 +11,12 @@ const env = {
   GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
 }
 
+const GTAGcode = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag(\'js\', new Date());
+
+gtag(\'config\', \'${env.GOOGLE_ANALYTICS_ID}\');`
+
 export default {
   env,
 
@@ -85,8 +91,22 @@ export default {
       { rel: 'mask-icon', href: '/safari-icon.svg', color: '#FFFFFF' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
       { rel: 'manifest', href: '/manifest.json' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap' }
     ],
+    script: [
+      {
+        hid: 'GTAGsrc',
+        src: 'https://www.googletagmanager.com/gtag/js?id=' + env.GOOGLE_ANALYTICS_ID,
+        async: true,
+      },
+      {
+        hid: 'GTAGcode',
+        innerHTML: GTAGcode,
+      }
+    ],
+    __dangerouslyDisableSanitizersByTagID: {
+      'GTAGsrc': ['innerHTML'],
+      'GTAGcode': ['innerHTML'],
+    },
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
