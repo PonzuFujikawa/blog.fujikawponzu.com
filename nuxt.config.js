@@ -232,12 +232,7 @@ export default {
           src: '/icon/android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png',
-        },
-        {
-          src: '/icon/maskable_icon.png',
-          sizes: '512x512',
-          type: 'image/png',
-          porpose: 'maskable'
+          purpose: 'maskable'
         },
       ],
       start_url: '?standalone=true',
