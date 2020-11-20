@@ -85,11 +85,11 @@ export default {
       { name: 'twitter:create', content: '@PonzuFujikawa' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'shortcut icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
-      { rel: 'mask-icon', href: '/safari-icon.svg', color: '#FFFFFF' },
-      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/icon/favicon.ico' },
+      { rel: 'shortcut icon', href: '/icon/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/icon/apple-touch-icon-180x180.png' },
+      { rel: 'mask-icon', href: '/icon/safari-icon.svg', color: '#FFFFFF' },
+      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/icon/android-chrome-192x192.png' },
       { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap', as: 'style' }
     ],
     script: [
