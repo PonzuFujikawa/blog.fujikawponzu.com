@@ -21,15 +21,15 @@
 </template>
 
 <script lang="ts">
-import { NuxtVueI18n } from 'nuxt-i18n';
-import { Component } from 'nuxt-property-decorator';
+import { NuxtVueI18n } from 'nuxt-i18n'
+import { Component } from 'nuxt-property-decorator'
 import Vue from 'vue'
 
 @Component
 export default class Default extends Vue {
   get availableLocales() {
-    let locales = this.$i18n.locales as unknown as NuxtVueI18n.Options.LocaleObject
-    return locales.filter((i: { code: string; }) => i.code !== this.$i18n.locale)
+    const locales = (this.$i18n.locales as unknown) as NuxtVueI18n.Options.LocaleObject
+    return locales.filter((i: { code: string }) => i.code !== this.$i18n.locale)
   }
 }
 </script>

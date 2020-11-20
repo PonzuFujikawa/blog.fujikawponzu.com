@@ -29,6 +29,7 @@ import { Component, Prop } from 'nuxt-property-decorator'
 export default class Content extends Vue {
   @Prop()
   posts!: Entry<any>[]
+  
   loadingImg = require('../assets/img/loading.png')
 
   public getLink(slug: string) {

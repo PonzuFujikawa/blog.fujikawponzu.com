@@ -8,14 +8,14 @@ const env = {
   CTF_SI: process.env.CTF_SI,
   CTF_CDA_AT: process.env.CTF_CDA_AT,
   CTF_CPA_AT: process.env.CTF_CPA_AT,
-  GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID
+  GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
 }
 
 const GTAGcode = `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag(\'js\', new Date());
+gtag('js', new Date());
 
-gtag(\'config\', \'${env.GOOGLE_ANALYTICS_ID}\');`
+gtag('config', '${env.GOOGLE_ANALYTICS_ID}');`
 
 export default {
   env,
@@ -36,7 +36,7 @@ export default {
           }),
         ]
       })
-    }
+    },
   },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
@@ -75,7 +75,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no,email=no,address=no' },
 
       { name: 'theme-color', content: '#FFFFFF' },
-      
+
       { name: 'msapplication-config', content: '/browserconfig.xml' },
       { name: 'msapplication-TileColor', content: '#FFFFFF' },
       { name: 'msapplication-TileImage', content: '/mstile-144x144.png' },
@@ -87,10 +87,23 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/icon/favicon.ico' },
       { rel: 'shortcut icon', href: '/icon/favicon.ico' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/icon/apple-touch-icon-180x180.png' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/icon/apple-touch-icon-180x180.png'
+      },
       { rel: 'mask-icon', href: '/icon/safari-icon.svg', color: '#FFFFFF' },
-      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/icon/android-chrome-192x192.png' },
-      { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap', as: 'style' }
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '192x192',
+        href: '/icon/android-chrome-192x192.png'
+      },
+      {
+        rel: 'preload',
+        href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap',
+        as: 'style'
+      },
     ],
     script: [
       {
@@ -101,11 +114,11 @@ export default {
       {
         hid: 'GTAGcode',
         innerHTML: GTAGcode,
-      }
+      },
     ],
     __dangerouslyDisableSanitizersByTagID: {
-      'GTAGsrc': ['innerHTML'],
-      'GTAGcode': ['innerHTML'],
+      GTAGsrc: ['innerHTML'],
+      GTAGcode: ['innerHTML'],
     },
   },
 
@@ -120,9 +133,7 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/utils',
-    '@/plugins/contentful',
-    '@/plugins/i18n',
+    '@/plugins/utils', '@/plugins/contentful', '@/plugins/i18n',
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -144,7 +155,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
     // https://i18n.nuxtjs.org/
-    ['nuxt-i18n',
+    [
+      'nuxt-i18n',
       {
         locales: [
           {
@@ -160,8 +172,8 @@ export default {
             file: 'ja.json',
           },
         ],
-      }
-    ]
+      },
+    ],
   ],
 
   i18n: {
@@ -207,12 +219,19 @@ export default {
       const filename = lang.split(':')[1]
       if (lang && hljs.getLanguage(languageName)) {
         try {
-          return '<pre class="hljs ' + languageName + 
+          return (
+            '<pre class="hljs ' +
+            languageName + 
             (filename ? '" name="' + filename + '"><code>' : '><code>') +
             hljs.highlight(languageName, str, true).value +
             '</code></pre>'
+          )
         } catch (__) {}
-        return '<pre class="hljs"><code>' + hljs.highlight('plaintext', str, true).value + '</code></pre>'
+        return (
+          '<pre class="hljs"><code>' +
+          hljs.highlight('plaintext', str, true).value +
+          '</code></pre>'
+        )
       }
     },
   },
@@ -232,10 +251,10 @@ export default {
           src: '/icon/android-chrome-512x512.png',
           sizes: '512x512',
           type: 'image/png',
-          purpose: 'maskable'
+          purpose: 'maskable',
         },
       ],
-      start_url: '?standalone=true',
+      start_url: 'http://localhost:3000',
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#ffffff',

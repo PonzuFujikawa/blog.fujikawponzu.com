@@ -19,8 +19,6 @@ import { Component, Prop } from 'nuxt-property-decorator'
 export default class Content extends Vue {
   @Prop()
   post!: Entry<any>
-
-
 }
 </script>
 
