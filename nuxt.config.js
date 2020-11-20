@@ -226,10 +226,30 @@ export default {
         {
           src: '/icon/android-chrome-192x192.png',
           sizes: '192x192',
-          type: 'image/png'
+          type: 'image/png',
+        },
+        {
+          src: '/icon/android-chrome-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+        },
+        {
+          src: '/icon/maskable_icon.png',
+          sizes: '512x512',
+          type: 'image/png',
+          porpose: 'maskable'
         },
       ],
+      start_url: '?standalone=true',
+      display: 'standalone',
+      background_color: '#ffffff',
+      theme_color: '#ffffff',
+      dir: 'ltr',
+      lang: 'en',
       useWebmanifestExtension: true,
+    },
+    workbox: {
+      dev: true,
     },
   },
 
