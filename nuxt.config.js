@@ -224,7 +224,7 @@ export default {
       description: "FujikawaPonzu's Tech Logs",
       icons: [
         {
-          src: '/android-chrome-192x192.png',
+          src: '/icon/android-chrome-192x192.png',
           sizes: '192x192',
           type: 'image/png'
         },
