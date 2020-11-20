@@ -64,7 +64,7 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     htmlAttrs: {
-      prefix: "og: http://ogp.me/ns# fb: http://ogp.me/ns fb#",
+      prefix: 'og: http://ogp.me/ns# fb: http://ogp.me/ns fb#',
     },
     meta: [
       { charset: 'utf-8' },
@@ -90,7 +90,6 @@ export default {
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon-180x180.png' },
       { rel: 'mask-icon', href: '/safari-icon.svg', color: '#FFFFFF' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/android-chrome-192x192.png' },
-      { rel: 'manifest', href: '/manifest.json' },
       { rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap', as: 'style' }
     ],
     script: [
@@ -186,7 +185,7 @@ export default {
       useCookie: true,
     },
     lazy: true,
-    langDir: "locales/",
+    langDir: 'locales/',
     vueI18n: {
       fallbackLocale: 'ja',
     },
@@ -215,6 +214,22 @@ export default {
         } catch (__) {}
         return '<pre class="hljs"><code>' + hljs.highlight('plaintext', str, true).value + '</code></pre>'
       }
+    },
+  },
+
+  pwa: {
+    manifest: {
+      name: 'FujiPonLog',
+      short_name: 'FPL',
+      description: "FujikawaPonzu's Tech Logs",
+      icons: [
+        {
+          src: '/android-chrome-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+      ],
+      useWebmanifestExtension: true,
     },
   },
 
