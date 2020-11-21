@@ -10,8 +10,9 @@ import { mapState } from 'vuex'
 import { Entry } from 'contentful'
 import { Component } from 'nuxt-property-decorator'
 import HeadMixin from '~/mixins/headMixin'
-import contentComponent from '~/components/content.vue'
-import contentSidebar from '~/components/sidebar.vue'
+
+const contentComponent = () => import('~/components/content.vue')
+const contentSidebar = () => import('~/components/sidebar.vue')
 
 @Component({
   components: {

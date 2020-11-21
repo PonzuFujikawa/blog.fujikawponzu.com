@@ -14,7 +14,7 @@ import Vue from 'vue'
 export default class Card extends Vue {
   @Prop()
   post!: Object
-  
+
   loadingImg = require('../assets/img/loading.png')
 
   public getLink(slug: string) {

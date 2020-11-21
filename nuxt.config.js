@@ -90,25 +90,28 @@ export default {
       {
         rel: 'apple-touch-icon',
         sizes: '180x180',
-        href: '/icon/apple-touch-icon-180x180.png'
+        href: '/icon/apple-touch-icon-180x180.png',
       },
       { rel: 'mask-icon', href: '/icon/safari-icon.svg', color: '#FFFFFF' },
       {
         rel: 'icon',
         type: 'image/png',
         sizes: '192x192',
-        href: '/icon/android-chrome-192x192.png'
+        href: '/icon/android-chrome-192x192.png',
       },
       {
         rel: 'preload',
-        href: 'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap',
-        as: 'style'
+        href:
+          'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap',
+        as: 'style',
       },
     ],
     script: [
       {
         hid: 'GTAGsrc',
-        src: 'https://www.googletagmanager.com/gtag/js?id=' + env.GOOGLE_ANALYTICS_ID,
+        src:
+          'https://www.googletagmanager.com/gtag/js?id=' +
+          env.GOOGLE_ANALYTICS_ID,
         async: true,
       },
       {
@@ -132,9 +135,7 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    '@/plugins/utils', '@/plugins/contentful', '@/plugins/i18n',
-  ],
+  plugins: ['@/plugins/utils', '@/plugins/contentful', '@/plugins/i18n',],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -204,7 +205,6 @@ export default {
     seo: false,
   },
 
-
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
 
@@ -221,7 +221,7 @@ export default {
         try {
           return (
             '<pre class="hljs ' +
-            languageName + 
+            languageName +
             (filename ? '" name="' + filename + '"><code>' : '><code>') +
             hljs.highlight(languageName, str, true).value +
             '</code></pre>'
