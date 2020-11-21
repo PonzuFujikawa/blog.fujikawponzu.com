@@ -21,7 +21,7 @@ export default class HeadMixin extends Vue {
     const baseUrl: string = process.env.BASE_URL || ''
     const currentUrl: string = `${baseUrl}${this.$route.path}`
 
-    const ogpImagePath: string = `${headInfo.ogpImgPath || '/ogp.png'}`
+    const ogpImagePath: string = `${headInfo.ogpImgPath || '/ogp.webp'}`
 
     return {
       title: title,
