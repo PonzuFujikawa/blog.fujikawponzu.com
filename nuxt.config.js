@@ -1,8 +1,4 @@
 import colors from 'vuetify/es5/util/colors'
-import hljs from 'highlight.js/lib/highlight'
-import bash from 'highlight.js/lib/languages/bash'
-import javascript from 'highlight.js/lib/languages/javascript'
-import typescript from 'highlight.js/lib/languages/typescript'
 
 require('dotenv').config()
 const contentfulClient = require('./plugins/contentful').default
@@ -218,10 +214,10 @@ export default {
     html: true,
     linkify: true,
     highlight: (str, lang) => {
-      hljs.registerLanguage('bash', bash)
-      hljs.registerLanguage('javascript', javascript)
-      hljs.registerLanguage('typescript', typescript)
-
+      const hljs = require('highlight.js/lib/core')
+      hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'))
+      hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'))
+      hljs.registerLanguage('typescript', require('highlight.js/lib/languages/typescript'))
       const languageName = lang.split(':')[0]
       const filename = lang.split(':')[1]
       if (lang && hljs.getLanguage(languageName)) {
