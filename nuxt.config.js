@@ -101,11 +101,11 @@ export default {
         sizes: '192x192',
         href: '/icon/android-chrome-192x192.png',
       },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
       {
-        rel: 'preload',
+        rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap',
-        as: 'style',
       },
     ],
     script: [
@@ -220,9 +220,6 @@ export default {
       dir: 'ltr',
       lang: 'en',
       useWebmanifestExtension: true,
-    },
-    workbox: {
-      dev: true,
     },
   },
 
