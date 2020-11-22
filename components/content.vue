@@ -2,10 +2,10 @@
   v-sheet( tag="article" elevation="2" rounded class="ctf_content" )
     h1( class="ctf_content__title" ) {{ post.fields.title }}
     small( class="d-inline-flex align-center" )
-      v-icon( dense ) mdi-clock-outline
+      v-icon( dense ) {{ icons.mdiClockOutline }}
       div {{ $getFormattedDate(post.sys.createdAt) }}
     small( class="d-inline-flex align-center" )
-      v-icon( dense ) mdi-update
+      v-icon( dense ) {{ icons.mdiUpdate }}
       div {{ $getFormattedDate(post.sys.updatedAt) }}
     section( v-html="$md.render(post.fields.article)" class="ctf_content__md_body" )
 </template>
@@ -14,11 +14,17 @@
 import Vue from 'vue'
 import { Entry } from 'contentful'
 import { Component, Prop } from 'nuxt-property-decorator'
+import { mdiClockOutline, mdiUpdate } from '@mdi/js'
 
 @Component
 export default class Content extends Vue {
   @Prop()
   post!: Entry<any>
+
+  private icons = {
+    mdiClockOutline,
+    mdiUpdate,
+  }
 }
 </script>
 

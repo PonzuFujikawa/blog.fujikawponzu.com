@@ -43,6 +43,7 @@ export default {
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
     customVariables: ['~/assets/css/variables.scss'],
+    defaultAssets: false,
     theme: {
       dark: false,
       themes: {
@@ -212,7 +213,7 @@ export default {
           purpose: 'maskable',
         },
       ],
-      start_url: 'https://blog.fujikawaponzu.com',
+      start_url: '/?source=pwa',
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#ffffff',

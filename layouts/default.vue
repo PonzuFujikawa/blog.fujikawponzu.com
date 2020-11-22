@@ -10,8 +10,8 @@
         :key="locale.code" :href="switchLocalePath(locale.code)")
           | {{ locale.name }}
         v-btn( fab small elevation="2" @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
-          v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) mdi-weather-sunny
-          v-icon( v-else color="yellow accent-4" ) mdi-weather-night
+          v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) {{ icons.mdiWeatherSunny }}
+          v-icon( v-else color="yellow accent-4" ) {{ icons.mdiWeatherNight }}
     v-main
       v-container( fluid )
         nuxt
@@ -24,9 +24,15 @@
 import { NuxtVueI18n } from 'nuxt-i18n'
 import { Component } from 'nuxt-property-decorator'
 import Vue from 'vue'
+import { mdiWeatherSunny, mdiWeatherNight } from '@mdi/js'
 
 @Component
 export default class Default extends Vue {
+  private icons = {
+    mdiWeatherSunny,
+    mdiWeatherNight,
+  }
+
   get availableLocales() {
     const locales = (this.$i18n.locales as unknown) as NuxtVueI18n.Options.LocaleObject
     return locales.filter((i: { code: string }) => i.code !== this.$i18n.locale)
