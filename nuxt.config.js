@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import i18n from './nuxt-i18n.config'
 
 require('dotenv').config()
 const contentfulClient = require('./plugins/contentful').default
@@ -156,54 +157,8 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
     // https://i18n.nuxtjs.org/
-    [
-      'nuxt-i18n',
-      {
-        locales: [
-          {
-            code: 'en',
-            iso: 'en-US',
-            name: 'English',
-            file: 'en.json',
-          },
-          {
-            code: 'ja',
-            iso: 'ja-JP',
-            name: '日本語',
-            file: 'ja.json',
-          },
-        ],
-      },
-    ],
+    [ 'nuxt-i18n', i18n ],
   ],
-
-  i18n: {
-    locales: [
-      {
-        code: 'en',
-        iso: 'en-US',
-        name: 'English',
-        file: 'en.json',
-      },
-      {
-        code: 'ja',
-        iso: 'ja-JP',
-        name: '日本語',
-        file: 'ja.json',
-      },
-    ],
-    defaultLocale: 'ja',
-    strategy: 'prefix_except_default',
-    detectBrowserLanguage: {
-      useCookie: true,
-    },
-    lazy: true,
-    langDir: 'locales/',
-    vueI18n: {
-      fallbackLocale: 'ja',
-    },
-    seo: false,
-  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
@@ -257,7 +212,7 @@ export default {
           purpose: 'maskable',
         },
       ],
-      start_url: 'http://localhost:3000',
+      start_url: 'https://blog.fujikawaponzu.com',
       display: 'standalone',
       background_color: '#ffffff',
       theme_color: '#ffffff',
