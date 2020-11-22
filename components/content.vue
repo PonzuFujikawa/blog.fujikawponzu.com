@@ -77,4 +77,5 @@ pre[name]:not([name="undefined"])::after
 @media screen and (max-width 768px)
   .ctf_content
     width 100%
+    margin-bottom 1rem
 </style>
