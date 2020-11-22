@@ -16,7 +16,7 @@
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/markdownit": "^1.2.10",
-    "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/pwa": "^3.2.2",
     "@types/highlight.js": "^10.1.0",
     "contentful": "^7.14.7",
     "core-js": "^3.6.5",
