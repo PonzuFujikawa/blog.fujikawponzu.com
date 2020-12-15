@@ -7,7 +7,7 @@
     small( class="d-inline-flex align-center" )
       v-icon( dense ) {{ icons.mdiUpdate }}
       div {{ $getFormattedDate(post.sys.updatedAt) }}
-    section( v-html="$md.render(post.fields.article)" class="ctf_content__md_body" )
+    section( v-html="post.fields.html" class="ctf_content__md_body" )
 </template>
 
 <script lang="ts">
@@ -73,6 +73,66 @@ pre[name]:not([name="undefined"])::after
     font-size 1.1rem
   h6
     font-size 1rem
+/* linkcard */
+.linkcard
+  display inline-block
+  max-width 100%
+  height 7.5rem
+  border  2px solid #eee
+  border-radius .5rem
+  overflow hidden
+  transition .2s ease
+
+  &:hover
+    background #a8e0ff24
+
+  .linkcard-link
+    display: flex;
+    justify-content space-between
+    width: 100%;
+    height: 100%;
+
+    .linkcard-text
+      display flex
+      justify-content space-between
+      flex-direction column
+      padding: .4rem .4rem .4rem .8rem;
+
+      p
+        margin 0
+        margin-bottom .1rem
+
+      .linkcard-title
+        color #333
+        font-weight bold
+        margin-bottom .3rem
+      
+      .linkcard-disc
+        display -webkit-box
+        -webkit-box-orient vertical
+        -webkit-line-clamp 1
+        overflow hidden
+        color #555
+        height 4rem
+      
+      .linkcard-link
+        display flex
+        justify-content flex-start
+        align-items flex-end
+        font-size .875rem
+        line-height 1.4
+        color #555
+
+        .linkcard-icon
+          vertical-align middle
+          margin-right .2rem
+
+    .linkcard-thumbnail
+      max-width 7.5rem
+      max-height 7.5rem
+
+      .linkcard-img
+        object-fit cover
 
 @media screen and (max-width 768px)
   .ctf_content
