@@ -156,9 +156,10 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/sitemap',
     '@nuxtjs/markdownit',
     // https://i18n.nuxtjs.org/
-    [ 'nuxt-i18n', i18n ],
+    ['nuxt-i18n', i18n],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -192,11 +193,30 @@ export default {
     },
   },
 
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://blog.fujikawaponzu.com',
+    routes() {
+      return Promise.all([
+        contentfulClient.getEntries({
+          content_type: 'blogPost',
+        }),
+      ]).then(([posts]) => {
+        const array = [
+          ...posts.items.map((post) => `/posts/${post.fields.slug}`),
+          ...posts.items.map((post) => `/en/posts/${post.fields.slug}`),
+        ]
+        return array.reduce(
+          (accumulator, currentValue) => accumulator.concat(currentValue),
+          []
+        )
+      })
+    },
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     extractCSS: true,
-    extend(config, ctx) {
-
-    },
+    extend(config, ctx) {},
   },
 }
