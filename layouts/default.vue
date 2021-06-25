@@ -1,48 +1,50 @@
 <template lang="pug">
-  v-app
-    v-toolbar( dense elevation="2" )
-      nuxt-link( :to="localePath('/')" class="text--primary" )
-        v-toolbar-title {{ $t('site_name') }}
-      v-spacer
-      div( class="d-inline-flex align-center" )
-        v-btn( tag="a" elevation="2" class="langswitcher text--primary"
-        v-for="locale in availableLocales"
-        :key="locale.code" :href="switchLocalePath(locale.code)")
-          | {{ locale.name }}
-        v-btn( fab small elevation="2" @click="$vuetify.theme.dark = $vuetify.theme.dark ? false : true" )
-          v-icon( v-if="$vuetify.theme.dark" color="yellow accent-1" ) {{ icons.mdiWeatherSunny }}
-          v-icon( v-else color="yellow accent-4" ) {{ icons.mdiWeatherNight }}
-    v-main
-      v-container( fluid )
+  div#application
+    header
+      nuxt-link( to="/" )
+        h1 ふじぽんログ
+      button.darkmode( @click="darkmode()" type="button" name="darkmode" )
+        i.icon.light-icon( v-if="!isDarkMode" )
+          svg( viewBox="0 0 24 24" )
+            path( :d="icons.mdiWeatherSunny" )
+        i.icon.dark-icon( v-else )
+          svg( viewBox="0 0 24 24" )
+            path( :d="icons.mdiWeatherNight" )
+    main
+      div( id="container" )
         nuxt
-    v-footer( padless )
-      v-col( class="text-center" ) &copy; {{ new Date().getFullYear() }} - 
-        a( class="text--primary" href="https://fujikawaponzu.com" target="_blank" rel="noopener noreferrer" ) fujikawaponzu.com
+    footer
+      small &copy; {{ new Date().getFullYear() }} - 
+        a( href="https://fujikawaponzu.com" target="_blank" rel="noopener noreferrer" ) fujikawaponzu.com
 </template>
 
 <script lang="ts">
-import { NuxtVueI18n } from 'nuxt-i18n'
-import { Component } from 'nuxt-property-decorator'
 import Vue from 'vue'
+import { Component } from 'nuxt-property-decorator'
 import { mdiWeatherSunny, mdiWeatherNight } from '@mdi/js'
 
 @Component
 export default class Default extends Vue {
+  private isDarkMode = false;
+
   private icons = {
     mdiWeatherSunny,
     mdiWeatherNight,
   }
 
-  get availableLocales() {
-    const locales = (this.$i18n.locales as unknown) as NuxtVueI18n.Options.LocaleObject
-    return locales.filter((i: { code: string }) => i.code !== this.$i18n.locale)
+  darkmode() {
+    this.isDarkMode = !this.isDarkMode
+    let elm = document.getElementById('application')
+    if (elm) {
+      elm.classList.toggle('dark')
+    }
   }
 }
 </script>
 
 <style lang="stylus">
 /* invalidation vuetify css */
-.v-application code {
+#application code {
   background unset
   color unset
   padding unset
@@ -56,15 +58,31 @@ code, kbd, pre, samp {
 </style>
 
 <style lang="stylus" scoped>
-.v-toolbar
-  flex initial
+#application
+  position relative
+  transition background .2s ease-in-out
+  padding-bottom 30px
+  min-height 100%
+
+header
+  display flex
+  justify-content space-between
+  padding 1rem 1.2rem
   a
     text-decoration none
-.v-btn:before
-  opacity 0 !important
-.langswitcher
-  border-radius 1rem
-  padding 0 1rem
-  margin 0 1rem
-  color initial
+
+main
+  margin 0 2vw
+
+.darkmode
+  background transparent
+  border 0
+
+footer 
+  display flex
+  justify-content center 
+  align-content center
+  position absolute
+  bottom 0
+  width 100%
 </style>

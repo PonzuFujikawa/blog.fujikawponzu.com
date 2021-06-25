@@ -10,24 +10,21 @@ export default class HeadMixin extends Vue {
   }
 
   public head(): MetaInfo {
-    const i18nSeo = this.$nuxtI18nSeo()
-    const t = this.$t.bind(this)
     const headInfo = this.headInfo()
 
-    const siteName: string = t('site_name') as string
-    const title: string = headInfo.title || t('site_name') as string
-    const description: string = headInfo.description || t('site_description') as string
+    const siteName: string = 'ふじぽんログ'
+    const title: string = headInfo.title || 'ふじぽんログ'
+    const description: string = headInfo.description || 'ふじかわぽんずのブログ'
 
     const baseUrl: string = process.env.BASE_URL || ''
     const currentUrl: string = `${baseUrl}${this.$route.path}`
 
-    const ogpImagePath: string = `${headInfo.ogpImgPath || '/ogp.webp'}`
+    const ogpImagePath: string = headInfo.ogpImgPath || '/ogp.webp'
 
     return {
       title: title,
       htmlAttrs: {
         prefix: 'og: http://ogp.me/ns# fb: http://ogp.me/ne/ fb#',
-        ...i18nSeo.htmlAttrs,
       },
       meta: [
         { hid: 'description', name: 'description', content: description },

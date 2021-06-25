@@ -1,6 +1,3 @@
-import colors from 'vuetify/es5/util/colors'
-import i18n from './nuxt-i18n.config'
-
 require('dotenv').config()
 const contentfulClient = require('./plugins/contentful').default
 
@@ -37,26 +34,6 @@ export default {
           }),
         ]
       })
-    },
-  },
-
-  // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
-  vuetify: {
-    customVariables: ['~/assets/css/variables.scss'],
-    defaultAssets: false,
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
-      },
     },
   },
 
@@ -105,7 +82,7 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap',
+          'https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap',
       },
     ],
     script: [
@@ -129,6 +106,8 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
+    '@/assets/css/color-theme/light.styl',
+    '@/assets/css/color-theme/dark.styl',
     '@/assets/css/style.styl',
     {
       src: '~/node_modules/highlight.js/styles/vs2015.css',
@@ -137,7 +116,7 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/utils', '@/plugins/contentful', '@/plugins/i18n'],
+  plugins: ['@/plugins/utils', '@/plugins/contentful'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -146,8 +125,6 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -158,8 +135,6 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/sitemap',
     '@nuxtjs/markdownit',
-    // https://i18n.nuxtjs.org/
-    ['nuxt-i18n', i18n],
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -167,9 +142,9 @@ export default {
 
   pwa: {
     manifest: {
-      name: 'FujiPonLog',
-      short_name: 'FPL',
-      description: "FujikawaPonzu's Tech Logs",
+      name: 'ふじぽんログ',
+      short_name: 'ふ',
+      description: 'ふじかわぽんずのブログ',
       icons: [
         {
           src: '/icon/android-chrome-192x192.png',
@@ -188,7 +163,7 @@ export default {
       background_color: '#ffffff',
       theme_color: '#ffffff',
       dir: 'ltr',
-      lang: 'en',
+      lang: 'ja',
       useWebmanifestExtension: true,
     },
   },
@@ -204,7 +179,6 @@ export default {
       ]).then(([posts]) => {
         const array = [
           ...posts.items.map((post) => `/posts/${post.fields.slug}`),
-          ...posts.items.map((post) => `/en/posts/${post.fields.slug}`),
         ]
         return array.reduce(
           (accumulator, currentValue) => accumulator.concat(currentValue),

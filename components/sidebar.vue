@@ -1,23 +1,20 @@
 <template lang="pug">
-  v-sheet( tag="aside" elevation="2" rounded class="sidebar")
+  aside.sidebar
     section.profile
-      h1.sidebar_title {{ $t("sidebar_webmaster") }}
+      h1.sidebar_title 管理者
       div.profile-wrapper
-        div
-          v-img( src="https://storage.googleapis.com/storage.fujikawaponzu.com/portfolio.png" 
-          aspect-ratio="1" position="center 20%" alt="プロフィール画像" )
-          cite {{ $t("webmaster_name") }}
-        div
-          a( href="https://twitter.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" class="social-badge" )
-            img( alt="Twitter Follow" src="https://img.shields.io/static/v1?label=twitter&style=flat&logo=twitter&message=%40PonzuFujikawa" )
-          a( href="https://github.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" class="social-badge" )
-            img( alt="GitHub followers" src="https://img.shields.io/static/v1?label=github&style=flat&logo=github&message=%40PonzuFujikawa")
+        img.profile-img( src="https://res.cloudinary.com/dktvrqec9/image/upload/v1620961855/portfolio_yxewx1.png" alt="プロフィール画像" )
+        cite ふじかわぽんず
+      div
+        a.social-badge( href="https://twitter.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" )
+          img( alt="Twitter Follow" src="https://img.shields.io/static/v1?label=twitter&style=flat&logo=twitter&message=%40PonzuFujikawa" )
+        a.social-badge( href="https://github.com/PonzuFujikawa" target="_brank" ref="noopener noreferrer" )
+          img( alt="GitHub followers" src="https://img.shields.io/static/v1?label=github&style=flat&logo=github&message=%40PonzuFujikawa")
     section.recent-articles
-      h1.sidebar_title {{ $t("sidebar_recent_articles") }}
-      ul
-        li( v-for="(post, index) in recent3Article" :key="index" )
-          nuxt-link( :to="getLink(post.fields.slug)" class="text--primary text-decoration-none" )
-            v-img( :lazy-src="loadingImg" :src="post.fields.thumbnail" :alt="post.fields.title" aspect-ratio=1200/630 )
+      h1.sidebar_title 最新記事
+      nuxt-link.article-card( v-for="(post, index) in recent3Article" :key="index" :to="getLink(post.fields.slug)" )
+        img( :src="post.fields.thumbnail" :alt="post.fields.title" width=128 height=128 )
+        h2 {{ post.fields.title }}
 </template>
 
 <script lang="ts">
@@ -29,11 +26,9 @@ import { Component, Prop } from 'nuxt-property-decorator'
 export default class Content extends Vue {
   @Prop()
   posts!: Entry<any>[]
-  
-  loadingImg = require('../assets/img/loading.png')
 
   public getLink(slug: string) {
-    return this.localePath(`/posts/${slug}`)
+    return `/posts/${slug}`
   }
 
   get recent3Article() {
@@ -44,30 +39,40 @@ export default class Content extends Vue {
 
 <style lang="stylus" scoped>
 .sidebar
-  width 18rem
+  width calc(100% - 20rem)
   max-width 100%
-  padding 1rem 1.2rem
+  display flex
+  flex-wrap wrap
+  margin-top 1rem
 
   section
-    margin-bottom 1rem
+    padding 1rem
 
     h1
       font-size 1.2rem
       border-bottom solid 2px #0D47A1
       margin-bottom .5rem
 
-    ul
-      padding-left 0
-      list-style none
-
-      li
-        padding 0.2rem 0
+    .article-card
+      display flex
+      justify-content flex-start
+      align-items center
+      padding 0.2rem 0
+      img
+        background-image url("~@/assets/img/Blocks-0.6s-256px.svg")
+        background-position center 
+        object-fit cover
+        margin-right 1rem
+      h2
+        margin 0
+        font-size 1rem
 
 .sidebar
   .profile
-    .v-image
+    .profile-img
       width 10rem
-      border-radius 50%
+      height 10rem
+      object-fit cover
   .profile-wrapper
     display flex
     flex-wrap wrap

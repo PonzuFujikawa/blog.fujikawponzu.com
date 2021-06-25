@@ -1,7 +1,7 @@
 import { ActionTree, GetterTree, MutationTree } from 'vuex'
 import contentfulClient from '~/plugins/contentful'
 import { Entry, EntryCollection } from 'contentful'
-import md from '@/plugins/markdown-it'
+import md from '~/middleware/markdown-it'
 import axios from '@nuxtjs/axios'
 
 export type RootState = ReturnType<typeof state>
@@ -21,19 +21,16 @@ export const mutations: MutationTree<RootState> = {
 
 export const actions: ActionTree<RootState, RootState> = {
   async nuxtServerInit({ commit }) {
-    let isEnLang = /en/.test(this.$i18n.locale);
     await contentfulClient.getEntries({
       content_type: 'blogPost',
       order: '-sys.createdAt',
-      locale: isEnLang ? 'en-US' : 'ja-JP',
+      locale: 'ja-JP',
     }).then((response: EntryCollection<any>) => {
       commit('setPosts', response.items)
     }).catch(console.error)
     for (const post of this.state.posts) {
-      let gcs_path_prefix = isEnLang ?
-        'https://storage.googleapis.com/storage.fujikawaponzu.com/OGP/EN/'
-        : 'https://storage.googleapis.com/storage.fujikawaponzu.com/OGP/'
-      post.fields.thumbnail = `${gcs_path_prefix}${post.fields.slug}.png`
+      const thumbnailUrl = post.fields.thumbnail ? post.fields.thumbnail[0].secure_url : ''
+      post.fields.thumbnail = thumbnailUrl
 
       const html = md.render(post.fields.article)
       const URL_REGEXP = /<p>(https?:\/\/[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+)<\/p>/im

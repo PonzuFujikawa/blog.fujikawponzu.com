@@ -1,5 +1,4 @@
 import MarkdownIt from 'markdown-it'
-import { NuxtApp, Inject } from '@nuxt/types/app'
 
 export default new MarkdownIt({
   breaks: false,
